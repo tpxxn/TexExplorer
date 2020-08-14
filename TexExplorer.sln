@@ -1,0 +1,51 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30406.217
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TexExplorer", "TexExplorer\TexExplorer.csproj", "{D6AE8BBD-7E94-431B-AA05-E4345A896DDA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KleiLib", "KleiLib\KleiLib.csproj", "{E617373D-4BEE-41ED-8DEE-F7AC6B6A96EC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SquishNET", "SquishNET\SquishNET.csproj", "{465D1429-5C4E-4AE9-97FD-1AC7B4E9818C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D6AE8BBD-7E94-431B-AA05-E4345A896DDA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6AE8BBD-7E94-431B-AA05-E4345A896DDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6AE8BBD-7E94-431B-AA05-E4345A896DDA}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{D6AE8BBD-7E94-431B-AA05-E4345A896DDA}.Debug|x64.Build.0 = Debug|Any CPU
+		{D6AE8BBD-7E94-431B-AA05-E4345A896DDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6AE8BBD-7E94-431B-AA05-E4345A896DDA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6AE8BBD-7E94-431B-AA05-E4345A896DDA}.Release|x64.ActiveCfg = Release|Any CPU
+		{D6AE8BBD-7E94-431B-AA05-E4345A896DDA}.Release|x64.Build.0 = Release|Any CPU
+		{E617373D-4BEE-41ED-8DEE-F7AC6B6A96EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E617373D-4BEE-41ED-8DEE-F7AC6B6A96EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E617373D-4BEE-41ED-8DEE-F7AC6B6A96EC}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{E617373D-4BEE-41ED-8DEE-F7AC6B6A96EC}.Debug|x64.Build.0 = Debug|Any CPU
+		{E617373D-4BEE-41ED-8DEE-F7AC6B6A96EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E617373D-4BEE-41ED-8DEE-F7AC6B6A96EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E617373D-4BEE-41ED-8DEE-F7AC6B6A96EC}.Release|x64.ActiveCfg = Release|Any CPU
+		{E617373D-4BEE-41ED-8DEE-F7AC6B6A96EC}.Release|x64.Build.0 = Release|Any CPU
+		{465D1429-5C4E-4AE9-97FD-1AC7B4E9818C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{465D1429-5C4E-4AE9-97FD-1AC7B4E9818C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{465D1429-5C4E-4AE9-97FD-1AC7B4E9818C}.Debug|x64.ActiveCfg = Debug|x64
+		{465D1429-5C4E-4AE9-97FD-1AC7B4E9818C}.Debug|x64.Build.0 = Debug|x64
+		{465D1429-5C4E-4AE9-97FD-1AC7B4E9818C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{465D1429-5C4E-4AE9-97FD-1AC7B4E9818C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{465D1429-5C4E-4AE9-97FD-1AC7B4E9818C}.Release|x64.ActiveCfg = Release|x64
+		{465D1429-5C4E-4AE9-97FD-1AC7B4E9818C}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8553A4D2-CDE3-4199-B15C-D064B29508F2}
+	EndGlobalSection
+EndGlobal

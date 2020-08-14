@@ -1,0 +1,20 @@
+﻿<Window x:Class="TexExplorer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TexExplorer"
+        xmlns:hc="https://handyorg.github.io/handycontrol"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Button Content="打开 tex" Click="ButtonBase_OnClick"/>
+        <Border Grid.Row="1" BorderBrush="Aqua" BorderThickness="2" Height="300" Width="600">
+            <hc:ImageViewer x:Name="ImageViewer" Background="Gray"/>
+        </Border>
+    </Grid>
+</Window>
