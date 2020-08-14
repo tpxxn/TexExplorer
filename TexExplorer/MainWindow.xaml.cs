@@ -8,6 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -18,6 +19,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 using System.Xml;
 using Microsoft.Win32;
 using TexExplorer.Model;
@@ -32,14 +34,13 @@ namespace TexExplorer
         [DllImport("gdi32")]
         static extern int DeleteObject(IntPtr o);
 
-        private BackgroundWorker backgroundWorker;
+        private readonly BackgroundWorker backgroundWorker = new BackgroundWorker();
 
         public TexTool Tool;
 
         public MainWindow()
         {
             InitializeComponent();
-            backgroundWorker = new BackgroundWorker();
             backgroundWorker.DoWork += BackgroundWorker_DoWork;
             backgroundWorker.RunWorkerCompleted += BackgroundWorker_RunWorkerCompleted;
             Tool = new TexTool();
@@ -54,8 +55,10 @@ namespace TexExplorer
 
         private void BackgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            
+            Dispatcher.Invoke(() => {ImageViewer.ImageSource = bitmapFrame;});
         }
+
+        private BitmapFrame bitmapFrame;
 
         void Tool_FileRawImage(object sender, FileRawImageEventArgs e)
         {
@@ -79,10 +82,13 @@ namespace TexExplorer
 
             IntPtr ip = e.Image.GetHbitmap();
             BitmapSource bitmapSource = System.Windows.Interop.Imaging.CreateBitmapSourceFromHBitmap(
-                ip, IntPtr.Zero, Int32Rect.Empty,
+                ip, 
+                IntPtr.Zero, 
+                Int32Rect.Empty, 
                 BitmapSizeOptions.FromEmptyOptions());
-            var bitmapFrame = BitmapFrame.Create(bitmapSource);
-            ImageViewer.ImageSource = bitmapFrame;
+            bitmapFrame = BitmapFrame.Create(bitmapSource); 
+            Dispatcher.Invoke(() => { ImageViewer.ImageSource = bitmapFrame; });
+            //ImageViewer.ImageSource = bitmapFrame;
             DeleteObject(ip);
             //zoomLevelToolStripComboBox.Text = string.Format("{0}%", imageBox.Zoom);
         }
@@ -106,14 +112,14 @@ namespace TexExplorer
                     anxml.LoadXml(File.ReadAllText(dialog.FileName));
                     XmlNode atlas = anxml.GetElementsByTagName("Atlas")[0];
                     XmlNode texture = atlas.SelectSingleNode("Texture");
-                    string texname = texture.Attributes["filename"].Value;
+                    string texName = texture.Attributes["filename"].Value;
                     string dictor = System.IO.Path.GetDirectoryName(dialog.FileName) + @"\";
-                    string xmlpath = dictor + texname;
-                    Console.WriteLine(xmlpath);
+                    string xmlPath = dictor + texName;
+                    Console.WriteLine(xmlPath);
 
-                    tool.OpenFile(dialog.SafeFileName, new FileStream(xmlpath, FileMode.Open));
-                    int alterwidth = tool.CurrentFileRaw.Width;
-                    int alterheight = tool.CurrentFileRaw.Height;
+                    tool.OpenFile(dialog.SafeFileName, new FileStream(xmlPath, FileMode.Open));
+                    int alterWidth = tool.CurrentFileRaw.Width;
+                    int alterHeight = tool.CurrentFileRaw.Height;
                     XmlNode Elements = atlas.SelectSingleNode("Elements");
                     XmlNodeList elements = Elements.SelectNodes("Element");
                     foreach (XmlNode node in elements)
@@ -123,25 +129,37 @@ namespace TexExplorer
                         float u2 = Convert.ToSingle(node.Attributes["u2"].Value);
                         float v1 = Convert.ToSingle(node.Attributes["v1"].Value);
                         float v2 = Convert.ToSingle(node.Attributes["v2"].Value);
-                        int imageheight = (int)(alterheight * v2 - alterheight * v1);
-                        int imagewidth = (int)(alterwidth * u2 - alterwidth * u1);
-                        Console.WriteLine("(" + (int)(alterwidth * u1) + "," + (int)(alterheight - (alterheight * v1) - imageheight) + ")  (" + (int)(alterwidth * u2) + "," + (int)(alterheight - alterheight * v2 + imageheight) + ")");
-                        System.Drawing.Rectangle cloneRect = new System.Drawing.Rectangle((int)(alterwidth * u1), (int)(alterheight - (alterheight * v1) - imageheight), imagewidth, imageheight);
+                        int imageHeight = (int)(alterHeight * v2 - alterHeight * v1);
+                        int imageWidth = (int)(alterWidth * u2 - alterWidth * u1);
+                        Console.WriteLine("(" + (int)(alterWidth * u1) + "," + (int)(alterHeight - (alterHeight * v1) - imageHeight) + ")  (" + (int)(alterWidth * u2) + "," + (int)(alterHeight - alterHeight * v2 + imageHeight) + ")");
+                        System.Drawing.Rectangle cloneRect = new System.Drawing.Rectangle((int)(alterWidth * u1), (int)(alterHeight - (alterHeight * v1) - imageHeight), imageWidth, imageHeight);
                         //Rectangle cloneRect = new Rectangle(0, (int)(alterheight - (alterheight * v1) - imageheight), (int)(alterwidth * u2), (int)(alterheight - alterheight * v2 + imageheight));
                         System.Drawing.Imaging.PixelFormat format = tool.CurrentFileRaw.PixelFormat;
                         Bitmap cloneBitmap = tool.CurrentFileRaw.Clone(cloneRect, format);
-                        FileStream wimage = new FileStream(dictor + name, FileMode.Create);
-                        cloneBitmap.Save(wimage, ImageFormat.Png);
-                        wimage.Close();
+                        FileStream wImage = new FileStream(dictor + name, FileMode.Create);
+                        cloneBitmap.Save(wImage, ImageFormat.Png);
+                        wImage.Close();
                     }
-                    System.Diagnostics.ProcessStartInfo psi = new System.Diagnostics.ProcessStartInfo("Explorer.exe");
-                    psi.Arguments = "/e,/select," + dialog.FileName;
+                    System.Diagnostics.ProcessStartInfo psi = new System.Diagnostics.ProcessStartInfo("Explorer.exe")
+                    {
+                        Arguments = "/e,/select," + dialog.FileName
+                    };
                     System.Diagnostics.Process.Start(psi);
                     return;
                 }
                 //backgroundWorker.RunWorkerAsync(dialog);
-                Tool.OpenFile(dialog.FileName, dialog.OpenFile());
+                OpenFile(dialog);
             }
+        }
+
+        private void OpenFile(OpenFileDialog dialog)
+        {
+            Dispatcher.Invoke(
+                DispatcherPriority.Normal,
+                (ThreadStart) delegate
+                {
+                    Tool.OpenFile(dialog.FileName, dialog.OpenFile());
+                });
         }
     }
 }

@@ -186,7 +186,7 @@ namespace TexExplorer.Model
             string fileDir = fileInfo.DirectoryName;
             string fileNameWithoutExt = fileInfo.Name.Replace(fileInfo.Extension, "");
             string atlasDataPath = fileDir + @"\" + fileNameWithoutExt + "." + atlasExt;
-            Console.WriteLine("afefsfesfesfefsfesf:" + atlasDataPath);
+            Console.WriteLine("XmlPath:" + atlasDataPath);
             List<KleiTextureAtlasElement> atlasElements = new List<KleiTextureAtlasElement>();
 
             if (File.Exists(atlasDataPath))
