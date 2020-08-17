@@ -76,7 +76,6 @@
     </ApplicationDefinition>
     <Compile Include="Model\TexTool.cs" />
     <Compile Include="Model\ValueBoxes.cs" />
-    <Compile Include="UserControls\ImageViewer.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Page Include="MainWindow.xaml">
@@ -129,5 +128,6 @@
       <Name>SquishNET</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

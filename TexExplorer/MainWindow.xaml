@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TexExplorer"
-        xmlns:uc="clr-namespace:TexExplorer.UserControls"
+        xmlns:hc="https://handyorg.github.io/handycontrol"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
@@ -13,8 +13,6 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Button Content="打开 tex" Click="ButtonBase_OnClick"/>
-        <Border Grid.Row="1" BorderBrush="Aqua" BorderThickness="2" Height="300" Width="600">
-            <uc:ImageViewer x:Name="ImageViewer" Background="Gray"/>
-        </Border>
+        <hc:ImageViewer x:Name="ImageViewer" Grid.Row="1" Background="Gray"/>
     </Grid>
 </Window>
