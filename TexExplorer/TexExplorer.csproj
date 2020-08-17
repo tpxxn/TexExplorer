@@ -48,7 +48,8 @@
       <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\GalaSoft.MvvmLight.Platform.dll</HintPath>
     </Reference>
     <Reference Include="HandyControl, Version=2.5.0.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\HandyControl.2.5.0.2\lib\net47\HandyControl.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\dll\HandyControl.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
