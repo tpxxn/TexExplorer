@@ -21,6 +21,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 using System.Xml;
+using HandyControl.Data;
 using Microsoft.Win32;
 using TexExplorer.Model;
 
@@ -87,7 +88,17 @@ namespace TexExplorer
                 Int32Rect.Empty, 
                 BitmapSizeOptions.FromEmptyOptions());
             bitmapFrame = BitmapFrame.Create(bitmapSource); 
-            Dispatcher.Invoke(() => { ImageViewer.ImageSource = bitmapFrame; });
+            ImageViewer.ImageSource = bitmapFrame;
+            if (e.AtlasElements.Count != 0)
+            {
+                var atlasElements = new List<HandyControl.Data.KleiTextureAtlasElement>();
+                foreach (var atlas in e.AtlasElements)
+                {
+                    var atlasElement = new HandyControl.Data.KleiTextureAtlasElement(atlas.Name, atlas.ImgHMin, atlas.ImgHMax, atlas.ImgVMin, atlas.ImgVMax);
+                    atlasElements.Add(atlasElement);
+                }
+                ImageViewer.AtlasElements = atlasElements;
+            }
             //ImageViewer.ImageSource = bitmapFrame;
             DeleteObject(ip);
             //zoomLevelToolStripComboBox.Text = string.Format("{0}%", imageBox.Zoom);
