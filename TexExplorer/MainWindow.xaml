@@ -12,7 +12,88 @@
             <RowDefinition Height="80"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Button Content="打开 tex" Click="ButtonBase_OnClick"/>
+        <StackPanel Orientation="Horizontal">
+            <Button Click="Open_OnClick" Height="60">
+                <Button.Content>
+                    <StackPanel>
+                        <Image Width="32" Height="32">
+                            <Image.Source>
+                                <DrawingImage>
+                                    <DrawingImage.Drawing>
+                                        <DrawingGroup ClipGeometry="M0,0 V1024 H1024 V0 H0 Z">
+                                            <GeometryDrawing Brush="Black" Geometry="F1 M1024,1024z M0,0z M275.84,160L124.192,160 126.016,740.096A32,32,0,0,1,62.016,740.096L60.16,160A64,64,0,0,1,124.16,96L302.08,96 399.36,192 897.632,192A32,32,0,1,1,897.632,256L373.152,256 275.872,160z" />
+                                            <GeometryDrawing Brush="Black" Geometry="F1 M1024,1024z M0,0z M127.52,735.616A32,32,0,0,1,64.48,724.672L119.104,410.528C127.904,359.936,174.784,320,225.76,320L894.624,320C949.984,320,988.544,366.72,979.008,421.472L906.688,837.472C897.824,888.064,850.976,928,800,928L160,928A32,32,0,0,1,160,864L800,864C819.712,864,840.096,846.624,843.616,826.528L915.936,410.528C918.72,394.624,909.952,384,894.624,384L225.76,384C206.08,384,185.664,401.376,182.176,421.472L127.52,735.616z" />
+                                        </DrawingGroup>
+                                    </DrawingImage.Drawing>
+                                </DrawingImage>
+                            </Image.Source>
+                        </Image>
+                        <TextBlock Text="打开" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+            <Button Click="AntiElection_OnClick" Height="60">
+                <Button.Content>
+                    <StackPanel>
+                        <Image Width="32" Height="32">
+                            <Image.Source>
+                                <DrawingImage>
+                                    <DrawingImage.Drawing>
+                                        <DrawingGroup ClipGeometry="M0,0 V1024 H1024 V0 H0 Z">
+                                            <GeometryDrawing Brush="Black" Geometry="F1 M1024,1024z M0,0z M755.916,98.271L149,98.333C125.174,98.333,98.424,125.252,98.424,148.934L98.424,755.455C98.424,781.098,125.182,805.957,149,806.091L755.916,806.091C780.951,805.957,806.492,781.088,806.492,755.455L806.492,148.934C806.492,125.319,780.96,98.333,755.916,98.271z M636.396,484.642L259.786,484.644 259.775,484.645C239.021,484.645 222.507,471.533 222.507,447.537 222.507,425.033 239.646,410.11 259.646,410.11L636.396,410.107C656.981,410.11 673.666,426.795 673.667,447.378 673.663,467.955 656.978,484.641 636.396,484.642z" />
+                                            <GeometryDrawing Brush="Black" Geometry="F1 M1024,1024z M0,0z M960.163,489.052L960.165,919.071 960.166,919.083C960.166,937.944,947.261,953.791,929.806,958.285A40.859,40.859,0,0,1,919.691,959.557L919.685,959.557 360.19,959.558C337.837,959.557 319.715,941.435 319.712,919.08 319.712,896.726 337.833,878.605 360.187,878.605L879.216,878.604 879.213,489.051C879.216,466.694 897.337,448.573 919.691,448.573 942.041,448.577 960.162,466.699 960.163,489.052z" />
+                                        </DrawingGroup>
+                                    </DrawingImage.Drawing>
+                                </DrawingImage>
+                            </Image.Source>
+                        </Image>
+                        <TextBlock Text="反选" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+            <Button Click="Save_OnClick" Height="60">
+                <Button.Content>
+                    <StackPanel>
+                        <Image Width="32" Height="32">
+                            <Image.Source>
+                                <DrawingImage>
+                                    <DrawingImage.Drawing>
+                                        <DrawingGroup ClipGeometry="M0,0 V1024 H1024 V0 H0 Z">
+                                            <DrawingGroup>
+                                                <GeometryDrawing Brush="Black" Geometry="F1 M1024,1024z M0,0z M786.4,871.2L236.8,871.2C190.4,871.2,152,832.8,152,786.4L152,236.8C152,190.4,190.4,152,236.8,152L786.4,152C832.8,152,871.2,190.4,871.2,236.8L871.2,786.4C871.2,832.8,832.8,871.2,786.4,871.2z M236.8,200C216.8,200,200,216.8,200,236.8L200,786.4C200,806.4,216.8,823.2,236.8,823.2L786.4,823.2C806.4,823.2,823.2,806.4,823.2,786.4L823.2,236.8C823.2,216.8,806.4,200,786.4,200L236.8,200z" />
+                                                <GeometryDrawing Brush="Black" Geometry="F1 M1024,1024z M0,0z M645.6,407.2L378.4,407.2C328.8,407.2,288,366.4,288,316.8L288,183.2 336,183.2 336,316.8C336,340,355.2,359.2,378.4,359.2L645.6,359.2C668.8,359.2,688,340,688,316.8L688,183.2 736,183.2 736,316.8C736,366.4,695.2,407.2,645.6,407.2z" />
+                                                <GeometryDrawing Brush="Black" Geometry="F1 M1024,1024z M0,0z M627.2,316.8C613.6,316.8,603.2,306.4,603.2,292.8L603.2,180C603.2,166.4 613.6,156 627.2,156 640.8,156 651.2,166.4 651.2,180L651.2,292.8C651.2,306.4,640.8,316.8,627.2,316.8z" />
+                                            </DrawingGroup>
+                                        </DrawingGroup>
+                                    </DrawingImage.Drawing>
+                                </DrawingImage>
+                            </Image.Source>
+                        </Image>
+                        <TextBlock Text="保存" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+            <Button Click="SaveAll_OnClick" Height="60">
+                <Button.Content>
+                    <StackPanel>
+                        <Image Width="32" Height="32">
+                            <Image.Source>
+                                <DrawingImage>
+                                    <DrawingImage.Drawing>
+                                        <DrawingGroup ClipGeometry="M0,0 V1024 H1024 V0 H0 Z">
+                                            <GeometryDrawing Brush="Black" Geometry="F1 M1024,1024z M0,0z M786.4,871.2L236.8,871.2C190.4,871.2,152,832.8,152,786.4L152,236.8C152,190.4,190.4,152,236.8,152L786.4,152C832.8,152,871.2,190.4,871.2,236.8L871.2,786.4C871.2,832.8,832.8,871.2,786.4,871.2z M236.8,200C216.8,200,200,216.8,200,236.8L200,786.4C200,806.4,216.8,823.2,236.8,823.2L786.4,823.2C806.4,823.2,823.2,806.4,823.2,786.4L823.2,236.8C823.2,216.8,806.4,200,786.4,200L236.8,200z" />
+                                            <GeometryDrawing Brush="Black" Geometry="F1 M1024,1024z M0,0z M645.6,407.2L378.4,407.2C328.8,407.2,288,366.4,288,316.8L288,183.2 336,183.2 336,316.8C336,340,355.2,359.2,378.4,359.2L645.6,359.2C668.8,359.2,688,340,688,316.8L688,183.2 736,183.2 736,316.8C736,366.4,695.2,407.2,645.6,407.2z" />
+                                            <GeometryDrawing Brush="Black" Geometry="F1 M1024,1024z M0,0z M627.2,316.8C613.6,316.8,603.2,306.4,603.2,292.8L603.2,180C603.2,166.4 613.6,156 627.2,156 640.8,156 651.2,166.4 651.2,180L651.2,292.8C651.2,306.4,640.8,316.8,627.2,316.8z M360,505.6L282.4,709.6 312,709.6 332,653.6 416,653.6 436.8,709.6 465.6,709.6 388,505.6 360,505.6z M340,630.4L370.4,545.6C372,542.4,372.8,537.6,373.6,531.2L374.4,531.2C375.2,537.6,376.8,542.4,377.6,545.6L408,630.4 340,630.4z M521.6,505.6L495.2,505.6 495.2,709.6 602.4,709.6 602.4,686.4 521.6,686.4 521.6,505.6z M660,686.4L660,505.6 633.6,505.6 633.6,709.6 740.8,709.6 740.8,686.4 660,686.4z" />
+                                        </DrawingGroup>
+                                    </DrawingImage.Drawing>
+                                </DrawingImage>
+                            </Image.Source>
+                        </Image>
+                        <TextBlock Text="保存所有" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+        </StackPanel>
         <hc:ImageViewer ShowImgMap="True" MainBorderVisibility="Collapsed" x:Name="ImageViewer" Grid.Row="1">
             <hc:ImageViewer.Background>
                 <ImageBrush ImageSource="Resources/Image/ImageViewerBackground.png" Stretch="Uniform" TileMode="Tile" Viewport="0,0,16,16" ViewportUnits="Absolute"/>

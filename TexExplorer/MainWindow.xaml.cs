@@ -104,7 +104,7 @@ namespace TexExplorer
             //zoomLevelToolStripComboBox.Text = string.Format("{0}%", imageBox.Zoom);
         }
 
-        private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
+        private void Open_OnClick(object sender, RoutedEventArgs e)
         {
             OpenFileDialog dialog = new OpenFileDialog
             {
@@ -171,6 +171,21 @@ namespace TexExplorer
                 {
                     Tool.OpenFile(dialog.FileName, dialog.OpenFile());
                 });
+        }
+
+        private void AntiElection_OnClick(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Save_OnClick(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void SaveAll_OnClick(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
