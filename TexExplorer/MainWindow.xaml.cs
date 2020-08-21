@@ -100,6 +100,7 @@ namespace TexExplorer
             }
             ImageViewer.AtlasElements = atlasElements;
             ImageViewer.FileName = e.FileName;
+            ImageViewer.FileDirectory = e.FileDirectory;
             DeleteObject(ip);
             //zoomLevelToolStripComboBox.Text = string.Format("{0}%", imageBox.Zoom);
         }
