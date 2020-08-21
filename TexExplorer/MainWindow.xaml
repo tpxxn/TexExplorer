@@ -12,6 +12,7 @@
             <RowDefinition Height="80"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
+        <hc:SimplePanel Grid.RowSpan="2" hc:Growl.GrowlParent="True" VerticalAlignment="Top" HorizontalAlignment="Stretch"/>
         <StackPanel Orientation="Horizontal">
             <Button Click="Open_OnClick" Height="60">
                 <Button.Content>

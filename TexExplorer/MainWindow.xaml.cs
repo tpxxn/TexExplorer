@@ -21,9 +21,11 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 using System.Xml;
+using HandyControl.Controls;
 using HandyControl.Data;
 using Microsoft.Win32;
 using TexExplorer.Model;
+using Window = System.Windows.Window;
 
 namespace TexExplorer
 {
@@ -182,11 +184,13 @@ namespace TexExplorer
         private void Save_OnClick(object sender, RoutedEventArgs e)
         {
             ImageViewer.SaveFile(false);
+            Growl.Success("图片已保存!");
         }
 
         private void SaveAll_OnClick(object sender, RoutedEventArgs e)
         {
             ImageViewer.SaveFile(true);
+            Growl.Success($"图片已保存至{ImageViewer.FileDirectory}\\{ImageViewer.FileName}文件夹!");
         }
 
         private void Grid_OnClick(object sender, RoutedEventArgs e)
