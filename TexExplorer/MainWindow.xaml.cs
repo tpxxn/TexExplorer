@@ -89,17 +89,17 @@ namespace TexExplorer
                 BitmapSizeOptions.FromEmptyOptions());
             bitmapFrame = BitmapFrame.Create(bitmapSource); 
             ImageViewer.ImageSource = bitmapFrame;
+            var atlasElements = new List<HandyControl.Data.KleiTextureAtlasElement>();
             if (e.AtlasElements.Count != 0)
             {
-                var atlasElements = new List<HandyControl.Data.KleiTextureAtlasElement>();
                 foreach (var atlas in e.AtlasElements)
                 {
                     var atlasElement = new HandyControl.Data.KleiTextureAtlasElement(atlas.Name, atlas.ImgHMin, atlas.ImgHMax, atlas.ImgVMin, atlas.ImgVMax);
                     atlasElements.Add(atlasElement);
                 }
-                ImageViewer.AtlasElements = atlasElements;
             }
-            //ImageViewer.ImageSource = bitmapFrame;
+            ImageViewer.AtlasElements = atlasElements;
+            ImageViewer.FileName = e.FileName;
             DeleteObject(ip);
             //zoomLevelToolStripComboBox.Text = string.Format("{0}%", imageBox.Zoom);
         }

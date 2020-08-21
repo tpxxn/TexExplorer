@@ -76,11 +76,13 @@ namespace TexExplorer.Model
     {
         public Bitmap Image { get; set; }
         public List<KleiTextureAtlasElement> AtlasElements { get; set; }
+        public string FileName { get; set; }
 
-        public FileRawImageEventArgs(Bitmap image, List<KleiTextureAtlasElement> elements)
+        public FileRawImageEventArgs(Bitmap image, List<KleiTextureAtlasElement> elements, string fileName)
         {
             this.Image = image;
             this.AtlasElements = elements;
+            this.FileName = fileName;
         }
     }
 
@@ -220,7 +222,7 @@ namespace TexExplorer.Model
 
             CurrentFileRaw = pt;
 
-            OnRawImage(new FileRawImageEventArgs(pt, atlasElements));
+            OnRawImage(new FileRawImageEventArgs(pt, atlasElements, fileNameWithoutExt));
         }
 
         private List<KleiTextureAtlasElement> ReadAtlasData(string path, int mipmapWidth, int mipmapHeight)

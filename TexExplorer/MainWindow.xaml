@@ -13,7 +13,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Button Content="打开 tex" Click="ButtonBase_OnClick"/>
-        <hc:ImageViewer ShowImgMap="True" MainBorderVisibility="Visible" MainBorderBrush="Chartreuse" x:Name="ImageViewer" Grid.Row="1">
+        <hc:ImageViewer ShowImgMap="True" MainBorderVisibility="Collapsed" x:Name="ImageViewer" Grid.Row="1">
             <hc:ImageViewer.Background>
                 <ImageBrush ImageSource="Resources/Image/ImageViewerBackground.png" Stretch="Uniform" TileMode="Tile" Viewport="0,0,16,16" ViewportUnits="Absolute"/>
             </hc:ImageViewer.Background>
