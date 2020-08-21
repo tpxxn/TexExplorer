@@ -9,11 +9,11 @@
         Title="TexExplorer" Height="450" Width="800">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="80"/>
+            <RowDefinition Height="100"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <hc:SimplePanel Grid.RowSpan="2" hc:Growl.GrowlParent="True" VerticalAlignment="Top" HorizontalAlignment="Stretch"/>
-        <StackPanel Orientation="Horizontal">
+        <hc:SimplePanel Grid.RowSpan="2" hc:Growl.GrowlParent="True" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,10,10,0"/>
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
             <Button Click="Open_OnClick" Height="60">
                 <Button.Content>
                     <StackPanel>

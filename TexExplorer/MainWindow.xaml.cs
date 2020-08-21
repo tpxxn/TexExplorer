@@ -183,14 +183,30 @@ namespace TexExplorer
 
         private void Save_OnClick(object sender, RoutedEventArgs e)
         {
-            ImageViewer.SaveFile(false);
-            Growl.Success("图片已保存!");
+            var result = ImageViewer.SaveFile(false);
+            Growl.Clear();
+            if (result)
+            {
+                Growl.Success("图片已导出!");
+            }
+            else
+            {
+                Growl.Warning("取消导出!");
+            }
         }
 
         private void SaveAll_OnClick(object sender, RoutedEventArgs e)
         {
-            ImageViewer.SaveFile(true);
-            Growl.Success($"图片已保存至{ImageViewer.FileDirectory}\\{ImageViewer.FileName}文件夹!");
+            var result = ImageViewer.SaveFile(true);
+            Growl.Clear();
+            if (result)
+            {
+                Growl.Success($"图片已导出至{ImageViewer.FileDirectory}\\{ImageViewer.FileName}文件夹!");
+            }
+            else
+            {
+                Growl.Warning("未选中需要导出的图片!");
+            }
         }
 
         private void Grid_OnClick(object sender, RoutedEventArgs e)
