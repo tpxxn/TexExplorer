@@ -93,6 +93,24 @@
                     </StackPanel>
                 </Button.Content>
             </Button>
+            <Button Click="Grid_OnClick" Height="60">
+                <Button.Content>
+                    <StackPanel>
+                        <Image Width="32" Height="32">
+                            <Image.Source>
+                                <DrawingImage>
+                                    <DrawingImage.Drawing>
+                                        <DrawingGroup ClipGeometry="M0,0 V1024 H1024 V0 H0 Z">
+                                            <GeometryDrawing Brush="#FF000000" Geometry="F1 M1024,1024z M0,0z M928,0A96,96,0,0,1,1024,96L1024,928A96,96,0,0,1,928,1024L96,1024A96,96,0,0,1,0,928L0,96A96,96,0,0,1,96,0L928,0z M64,928A32,32,0,0,0,96,960L320,960 320,704 64,704 64,928z M640,704L384,704 384,960 640,960 640,704z M960,704L704,704 704,960 928,960A32,32,0,0,0,960,928L960,704z M960,640L960,384 704,384 704,640 960,640z M64,640L320,640 320,384 64,384 64,640z M640,384L384,384 384,640 640,640 640,384z M928,64L704,64 704,320 960,320 960,96A32,32,0,0,0,928,64z M320,64L96,64A32,32,0,0,0,64,96L64,320 320,320 320,64z M640,64L384,64 384,320 640,320 640,64z" />
+                                        </DrawingGroup>
+                                    </DrawingImage.Drawing>
+                                </DrawingImage>
+                            </Image.Source>
+                        </Image>
+                        <TextBlock Text="显示网格" HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Button.Content>
+            </Button>
         </StackPanel>
         <hc:ImageViewer ShowImgMap="True" MainBorderVisibility="Collapsed" x:Name="ImageViewer" Grid.Row="1">
             <hc:ImageViewer.Background>

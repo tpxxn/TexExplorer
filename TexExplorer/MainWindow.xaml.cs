@@ -187,5 +187,10 @@ namespace TexExplorer
         {
 
         }
+
+        private void Grid_OnClick(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
