@@ -175,17 +175,17 @@ namespace TexExplorer
 
         private void AntiElection_OnClick(object sender, RoutedEventArgs e)
         {
-
+            ImageViewer.AntiElection();
         }
 
         private void Save_OnClick(object sender, RoutedEventArgs e)
         {
-
+            ImageViewer.SaveFile(false);
         }
 
         private void SaveAll_OnClick(object sender, RoutedEventArgs e)
         {
-
+            ImageViewer.SaveFile(true);
         }
 
         private void Grid_OnClick(object sender, RoutedEventArgs e)
