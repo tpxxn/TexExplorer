@@ -24,6 +24,10 @@ namespace TexExplorer.ViewModel
     /// </summary>
     public class ViewModelLocator
     {
+        private static ViewModelLocator _current;
+
+        public static ViewModelLocator Current => _current ?? (_current = new ViewModelLocator());
+
         /// <summary>
         /// Initializes a new instance of the ViewModelLocator class.
         /// </summary>

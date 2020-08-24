@@ -6,18 +6,18 @@
         xmlns:local="clr-namespace:TexExplorer"
         xmlns:hc="https://handyorg.github.io/handycontrol"
         mc:Ignorable="d"
-        Title="TexExplorer" Height="450" Width="800">
+        Title="TexExplorer" Height="450" MinHeight="450" Width="800" MinWidth="800">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="100"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="25"/>
         </Grid.RowDefinitions>
-        <hc:SimplePanel Grid.RowSpan="2" hc:Growl.GrowlParent="True" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,10,10,0"/>
-        <StackPanel Grid.Row="0" Orientation="Horizontal">
-            <Button Click="Open_OnClick" Height="60">
+        <StackPanel Margin="10,0,0,0" Grid.Row="0" Orientation="Horizontal">
+            <Button Click="Open_OnClick" Height="70">
                 <Button.Content>
                     <StackPanel>
-                        <Image Width="32" Height="32">
+                        <Image Width="24" Height="32">
                             <Image.Source>
                                 <DrawingImage>
                                     <DrawingImage.Drawing>
@@ -33,10 +33,10 @@
                     </StackPanel>
                 </Button.Content>
             </Button>
-            <Button Click="AntiElection_OnClick" Height="60">
+            <Button x:Name="AntiElectionButton" Visibility="Collapsed" Click="AntiElection_OnClick" Height="70" >
                 <Button.Content>
                     <StackPanel>
-                        <Image Width="32" Height="32">
+                        <Image Width="24" Height="32">
                             <Image.Source>
                                 <DrawingImage>
                                     <DrawingImage.Drawing>
@@ -52,7 +52,7 @@
                     </StackPanel>
                 </Button.Content>
             </Button>
-            <Button Click="Save_OnClick" Height="60">
+            <Button x:Name="SaveButton" Visibility="Collapsed" Click="Save_OnClick" Height="70" >
                 <Button.Content>
                     <StackPanel>
                         <Image Width="32" Height="32">
@@ -74,7 +74,7 @@
                     </StackPanel>
                 </Button.Content>
             </Button>
-            <Button Click="SaveAll_OnClick" Height="60">
+            <Button x:Name="SaveAllButton" Visibility="Collapsed" Click="SaveAll_OnClick" Height="70" >
                 <Button.Content>
                     <StackPanel>
                         <Image Width="32" Height="32">
@@ -90,33 +90,154 @@
                                 </DrawingImage>
                             </Image.Source>
                         </Image>
-                        <TextBlock Text="保存所有" HorizontalAlignment="Center"/>
+                        <TextBlock Text="保存已选" HorizontalAlignment="Center"/>
                     </StackPanel>
                 </Button.Content>
             </Button>
-            <Button Click="Grid_OnClick" Height="60">
+            <Button x:Name="ShowGridButton" Visibility="Collapsed" Click="Grid_OnClick" Height="70" >
                 <Button.Content>
                     <StackPanel>
-                        <Image Width="32" Height="32">
+                        <Image Width="24" Height="32">
                             <Image.Source>
                                 <DrawingImage>
                                     <DrawingImage.Drawing>
                                         <DrawingGroup ClipGeometry="M0,0 V1024 H1024 V0 H0 Z">
-                                            <GeometryDrawing Brush="#FF000000" Geometry="F1 M1024,1024z M0,0z M928,0A96,96,0,0,1,1024,96L1024,928A96,96,0,0,1,928,1024L96,1024A96,96,0,0,1,0,928L0,96A96,96,0,0,1,96,0L928,0z M64,928A32,32,0,0,0,96,960L320,960 320,704 64,704 64,928z M640,704L384,704 384,960 640,960 640,704z M960,704L704,704 704,960 928,960A32,32,0,0,0,960,928L960,704z M960,640L960,384 704,384 704,640 960,640z M64,640L320,640 320,384 64,384 64,640z M640,384L384,384 384,640 640,640 640,384z M928,64L704,64 704,320 960,320 960,96A32,32,0,0,0,928,64z M320,64L96,64A32,32,0,0,0,64,96L64,320 320,320 320,64z M640,64L384,64 384,320 640,320 640,64z" />
+                                            <GeometryDrawing Brush="Black" Geometry="F1 M1024,1024z M0,0z M928,0A96,96,0,0,1,1024,96L1024,928A96,96,0,0,1,928,1024L96,1024A96,96,0,0,1,0,928L0,96A96,96,0,0,1,96,0L928,0z M64,928A32,32,0,0,0,96,960L320,960 320,704 64,704 64,928z M640,704L384,704 384,960 640,960 640,704z M960,704L704,704 704,960 928,960A32,32,0,0,0,960,928L960,704z M960,640L960,384 704,384 704,640 960,640z M64,640L320,640 320,384 64,384 64,640z M640,384L384,384 384,640 640,640 640,384z M928,64L704,64 704,320 960,320 960,96A32,32,0,0,0,928,64z M320,64L96,64A32,32,0,0,0,64,96L64,320 320,320 320,64z M640,64L384,64 384,320 640,320 640,64z" />
                                         </DrawingGroup>
                                     </DrawingImage.Drawing>
                                 </DrawingImage>
                             </Image.Source>
                         </Image>
-                        <TextBlock Text="显示网格" HorizontalAlignment="Center"/>
+                        <TextBlock x:Name="ShowGridText" Text="显示网格" HorizontalAlignment="Center"/>
                     </StackPanel>
                 </Button.Content>
             </Button>
+            <StackPanel x:Name="GridSizeGrid" Visibility="Collapsed" Height="70" Margin="10,0,0,0" Orientation="Horizontal">
+                <StackPanel Height="30" Orientation="Horizontal" VerticalAlignment="Center">
+                    <TextBlock Text="宽: " VerticalAlignment="Center"/>
+                    <hc:TextBox x:Name="GridSizeWidthTextBox" VerticalAlignment="Center" Width="120" TextAlignment="Center" Text="64"/>
+                </StackPanel>
+                <StackPanel Margin="10,0,0,0" Height="30" Orientation="Horizontal" VerticalAlignment="Center">
+                    <TextBlock Text="高: " VerticalAlignment="Center"/>
+                    <hc:TextBox x:Name="GridSizeHeightTextBox" VerticalAlignment="Center" Width="120" TextAlignment="Center" Text="64"/>
+                </StackPanel>
+                <Button Height="70" Margin="10,0,0,0" Content="分割" Click="SplitButtonBase_OnClick"/>
+            </StackPanel>
         </StackPanel>
+        <ToggleButton Height="70" Margin="0,0,10,0" HorizontalAlignment="Right" Grid.Row="0" IsChecked="{Binding IsOpen,ElementName=DrawerTop}">
+            <ToggleButton.Content>
+                <StackPanel>
+                    <Image Width="24" Height="32">
+                        <Image.Source>
+                            <DrawingImage>
+                                <DrawingImage.Drawing>
+                                    <DrawingGroup ClipGeometry="M0,0 V1024 H1024 V0 H0 Z">
+                                        <GeometryDrawing Brush="Black" Geometry="F1 M1024,1024z M0,0z M512,67C266.44,67 71.25,264.07 71.25,512 71.25,759.93 266.44,957 511.99,957 757.55,957 952.74,759.93 952.74,512 952.75,264.07 757.55,67 512,67z M512,906.14C297.93,906.14 121.63,728.14 121.63,511.99 121.63,295.85 297.93,117.85 512,117.85 726.08,117.85 902.38,295.85 902.38,511.99 902.37,728.14 726.08,906.14 512,906.14z M570.08,731.24C556.1,731.24 546.26,728.85 540.63,724.08 534.93,719.33 532.11,710.43 532.11,697.29 532.11,692.11 532.98,684.38 534.72,674.25 536.49,664.09 538.48,655.01 540.67,647.11L567.61,548.42C570.26,539.37 572.06,529.45 573.04,518.59 574.01,507.75 574.5,500.16 574.5,495.87 574.5,475.08 567.41,458.16 553.36,445.18 539.21,432.18 519.15,425.67 493.11,425.67 478.68,425.67 463.38,428.33 447.18,433.67 430.98,438.97 414.01,445.36 396.28,452.82L389.12,483.35C394.34,481.28 400.66,479.14 407.96,476.86 415.33,474.63 422.52,473.53 429.51,473.53 443.76,473.53 453.36,475.98 458.44,480.98 463.45,485.92 465.98,494.77 465.98,507.38 465.98,514.41 465.18,522.18 463.55,530.67 461.92,539.1 459.87,548.11 457.47,557.6L430.38,656.61C427.98,667.02 426.24,676.32 425.13,684.55 424.05,692.82 423.53,700.91 423.53,708.81 423.53,729.16 430.76,745.94 445.29,759.16 459.82,772.39 480.2,779.03 506.41,779.03 523.45,779.03 538.43,776.69 551.33,772.06 564.26,767.42 581.47,760.73 603.13,751.88L610.36,721.4C606.6,723.2 600.63,725.28 592.35,727.66 584.02,730.02 576.65,731.24 570.08,731.24z M552.97,244.97C535.31,244.97 520.08,251.05 507.39,263.27 494.8,275.44 488.41,290.21 488.41,307.35 488.41,324.54 494.81,339.18 507.39,351.26 520.08,363.36 535.31,369.39 552.97,369.39 570.67,369.39 585.83,363.36 598.38,351.26 610.93,339.18 617.26,324.54 617.26,307.35 617.26,290.21 610.93,275.45 598.38,263.27 585.83,251.04 570.67,244.97 552.97,244.97z" />
+                                    </DrawingGroup>
+                                </DrawingImage.Drawing>
+                            </DrawingImage>
+                        </Image.Source>
+                    </Image>
+                    <TextBlock Text="关于" HorizontalAlignment="Center"/>
+                </StackPanel>
+            </ToggleButton.Content>
+        </ToggleButton>
         <hc:ImageViewer ShowImgMap="True" MainBorderVisibility="Collapsed" x:Name="ImageViewer" Grid.Row="1">
             <hc:ImageViewer.Background>
                 <ImageBrush ImageSource="Resources/Image/ImageViewerBackground.png" Stretch="Uniform" TileMode="Tile" Viewport="0,0,16,16" ViewportUnits="Absolute"/>
             </hc:ImageViewer.Background>
         </hc:ImageViewer>
+        <StatusBar Grid.Row="2">
+            <StackPanel x:Name="StatusBarStackPanel" Orientation="Horizontal" >
+                <TextBlock Text="纹理格式"/>
+                <TextBlock x:Name="FormatTextBlock" Margin="5,0,0,0"/>
+                <hc:Divider LineStrokeThickness="2" Orientation="Vertical" MaxHeight="16"/>
+                <TextBlock Text="图片尺寸"/>
+                <TextBlock x:Name="SizeTextBlock" Margin="5,0,0,0"/>
+                <hc:Divider LineStrokeThickness="2" Orientation="Vertical" MaxHeight="16"/>
+                <TextBlock Text="Mipmaps"/>
+                <TextBlock x:Name="MipmapsTextBlock" Margin="5,0,0,0"/>
+                <hc:Divider LineStrokeThickness="2" Orientation="Vertical" MaxHeight="16"/>
+                <TextBlock Text="平台"/>
+                <TextBlock x:Name="PlatformTextBlock" Margin="5,0,0,0"/>
+                <hc:Divider LineStrokeThickness="2" Orientation="Vertical" MaxHeight="16"/>
+                <TextBlock Text="纹理类型"/>
+                <TextBlock x:Name="TextureTypeTextBlock" Margin="5,0,0,0"/>
+            </StackPanel>
+        </StatusBar>
+        <hc:SimplePanel Grid.Row="0" Grid.RowSpan="3" hc:Growl.GrowlParent="True" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,10,10,0"/>
+        <hc:Drawer Grid.Row="0" Grid.RowSpan="3" Name="DrawerTop" Dock="Right" ShowMode="Push">
+            <Border Background="{DynamicResource RegionBrush}" BorderThickness="0,1,0,0" BorderBrush="{DynamicResource BorderBrush}">
+                <Grid Width="270">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Margin="10,0,0,0" Text="关于" Style="{StaticResource TextBlockTitle}" HorizontalAlignment="Left"/>
+                    <Button CommandTarget="{Binding}" Command="hc:ControlCommands.Close" Grid.Row="0" HorizontalAlignment="Right" Foreground="{DynamicResource PrimaryTextBrush}" Style="{StaticResource ButtonIcon}" hc:IconElement.Geometry="{StaticResource DeleteFillCircleGeometry}"/>
+                    <StackPanel Grid.Row="1" Margin="10">
+                        <TextBlock Text="作者: tpxxn"/>
+                        <TextBlock Text="版本: 1.0.0"/>
+                        <StackPanel Margin="0,10,0,0" Orientation="Horizontal">
+                            <Button Focusable="False" Height="70" Click="QQQunButtonBase_OnClick" HorizontalAlignment="Left">
+                                <Button.Content>
+                                    <StackPanel>
+                                        <Image Width="32" Height="32">
+                                            <Image.Source>
+                                                <DrawingImage>
+                                                    <DrawingImage.Drawing>
+                                                        <DrawingGroup ClipGeometry="M0,0 V1024 H1024 V0 H0 Z">
+                                                            <GeometryDrawing Brush="#FF32A6D4" Geometry="F1 M1024,1024z M0,0z M512.003,64.488C264.845,64.488 64.4880000000001,264.845 64.4880000000001,512.003 64.4880000000001,759.135 264.845,959.512 512.003,959.512 759.159,959.512 959.512,759.135 959.512,512.003 959.517,264.845 759.159,64.4879999999999 512.003,64.4879999999999z" />
+                                                            <GeometryDrawing Brush="#FFFFFFFF" Geometry="F1 M1024,1024z M0,0z M687.132,612.655C687.132,612.655 674.554,646.966 651.481,677.786 651.481,677.786 692.706,691.793 689.224,728.209 689.224,728.209 690.603,768.824 601.187,766.022 601.187,766.022 538.28,761.119 519.423,734.51L502.798,734.51C483.939,761.13 421.054,766.022 421.054,766.022 331.607,768.821 333.006,728.209 333.006,728.209 329.516,691.793 370.737,677.786 370.737,677.786 347.686,646.966 335.109,612.655 335.109,612.655 279.199,703 284.792,600.047 284.792,600.047 295.286,539.117 339.288,499.204 339.288,499.204 332.996,443.867 356.057,434.074 356.057,434.074 360.9,262.889 508.025,265.879 511.109,265.962 514.204,265.879 661.31,262.889 666.16,434.062 666.16,434.062 689.214,443.867 682.929,499.192 682.929,499.192 726.953,539.107 737.428,600.035 737.431,600.047 743.011,703 687.132,612.655z" />
+                                                        </DrawingGroup>
+                                                    </DrawingImage.Drawing>
+                                                </DrawingImage>
+                                            </Image.Source>
+                                        </Image>
+                                        <TextBlock Text="QQ 群" HorizontalAlignment="Center"/>
+                                    </StackPanel>
+                                </Button.Content>
+                            </Button>
+                            <Button Margin="5,0,0,0" Focusable="False" Height="70" Click="GithubButtonBase_OnClick" HorizontalAlignment="Left">
+                                <Button.Content>
+                                    <StackPanel>
+                                        <Image Width="32" Height="32">
+                                            <Image.Source>
+                                                <DrawingImage>
+                                                    <DrawingImage.Drawing>
+                                                        <DrawingGroup ClipGeometry="M0,0 V1024 H1024 V0 H0 Z">
+                                                            <GeometryDrawing Brush="Black" Geometry="F1 M1024,1024z M0,0z M960,512A435.2,435.2,0,0,1,874.24,775.36A440,440,0,0,1,653.76,937.28A26.88,26.88,0,0,1,630.72,933.12A22.72,22.72,0,0,1,623.68,915.52L623.68,792.64A104.64,104.64,0,0,0,593.28,709.76A416,416,0,0,0,652.8,699.52A218.24,218.24,0,0,0,707.52,676.48A164.8,164.8,0,0,0,754.56,638.08A184,184,0,0,0,786.56,576.64A293.76,293.76,0,0,0,798.72,488.64A168.64,168.64,0,0,0,752.32,368.64A154.88,154.88,0,0,0,747.84,249.6A76.48,76.48,0,0,0,700.8,256A300.48,300.48,0,0,0,647.04,281.6L624.96,295.36A416,416,0,0,0,400.96,295.36C394.56,290.88,386.56,286.08,376.32,279.68A326.08,326.08,0,0,0,326.4,256A82.88,82.88,0,0,0,276.16,248A156.8,156.8,0,0,0,272,368A173.76,173.76,0,0,0,225.92,488.64A288,288,0,0,0,238.08,576A196.48,196.48,0,0,0,270.08,637.44A152,152,0,0,0,317.12,676.48A267.84,267.84,0,0,0,371.84,699.52A414.08,414.08,0,0,0,431.68,709.76A92.48,92.48,0,0,0,402.88,769.92A99.2,99.2,0,0,1,376.32,778.24A167.36,167.36,0,0,1,344.32,781.12A69.12,69.12,0,0,1,303.36,768A109.44,109.44,0,0,1,271.36,731.52A96,96,0,0,0,243.2,701.12A80.64,80.64,0,0,0,214.4,687.04L202.88,687.04A41.6,41.6,0,0,0,185.92,689.6Q181.12,692.48,183.04,696.32A44.16,44.16,0,0,0,188.48,704.32A55.36,55.36,0,0,0,196.16,711.68L200.32,714.24A78.08,78.08,0,0,1,225.92,736.32A157.76,157.76,0,0,1,244.16,765.76L249.92,779.2A72.32,72.32,0,0,0,275.52,815.36A96,96,0,0,0,314.24,832A196.16,196.16,0,0,0,354.56,836.16A182.08,182.08,0,0,0,386.56,833.92L400,831.68 400,915.52A23.04,23.04,0,0,1,392.32,933.12A27.84,27.84,0,0,1,368.96,937.28A438.08,438.08,0,0,1,149.76,774.4A427.84,427.84,0,0,1,64,512A437.44,437.44,0,0,1,124.16,288A443.52,443.52,0,0,1,288,124.16A437.44,437.44,0,0,1,512,64A437.44,437.44,0,0,1,736,124.16A443.52,443.52,0,0,1,899.84,288A436.8,436.8,0,0,1,960,512z" />
+                                                        </DrawingGroup>
+                                                    </DrawingImage.Drawing>
+                                                </DrawingImage>
+                                            </Image.Source>
+                                        </Image>
+                                        <TextBlock Text="Guthub" HorizontalAlignment="Center"/>
+                                    </StackPanel>
+                                </Button.Content>
+                            </Button>
+                            <Button Margin="5,0,0,0" Focusable="False" Height="70" Click="HandyControlButtonBase_OnClick" HorizontalAlignment="Left">
+                                <Button.Content>
+                                    <StackPanel>
+                                        <Image Width="32" Height="32">
+                                            <Image.Source>
+                                                <DrawingImage>
+                                                    <DrawingImage.Drawing>
+                                                        <DrawingGroup ClipGeometry="M0,0 V1024 H1024 V0 H0 Z">
+                                                            <GeometryDrawing Brush="Black" Geometry="F1 M1024,1024z M0,0z M927.81,868.47L927.81,757.57 927.81,251.69 927.81,152.46C927.81,140.33,928.52,124.53,926.01,115.49L926.01,105.76 924.21,105.76 924.21,101.87 922.41,101.87 922.41,97.98 918.81,96.03 918.81,90.19C915.21,85.65,911.6,81.11,908,76.57L898.99,74.62C898.39,73.32,897.79,72.03,897.19,70.73L893.59,70.73 893.59,68.78 889.99,68.78 889.99,66.83C877.22,61.57,848.75,64.88,832.34,64.88L145.94,64.88 145.94,66.83 136.93,66.83 136.93,68.78 133.33,68.78 133.33,70.73 129.73,70.73C129.13,72.03,128.53,73.32,127.93,74.62L118.92,76.57C115.32,81.11,111.71,85.65,108.11,90.19L108.11,96.03 104.51,97.98 104.51,101.87 102.71,101.87 102.71,105.76 100.91,105.76C96.1700000000002,119.18,99.1100000000002,148.8,99.1100000000002,166.08L99.1100000000002,860.69C99.1100000000002,878.8,95.7100000000002,904.28,100.91,919.06L102.71,919.06 102.71,922.95 104.51,922.95 104.51,926.84 108.11,928.79 109.91,938.52C114.11,942.41,118.32,946.3,122.52,950.19L127.92,950.19C128.52,951.49,129.12,952.78,129.72,954.08L133.32,954.08 133.32,956.03 136.92,956.03 136.92,957.98 145.93,957.98C156.27,961.36,174.05,959.93,187.37,959.93L839.53,959.93C852.85,959.93,870.61,961.34,880.97,957.98L889.98,957.98 889.98,956.03 893.58,956.03 893.58,954.08 897.18,954.08C897.78,952.78,898.38,951.49,898.98,950.19L907.99,948.24C911.59,943.7,915.2,939.16,918.8,934.62L918.8,928.78 922.4,926.83 922.4,922.94 924.2,922.94 924.2,919.05 926,919.05 926,909.32C928.84,899.23,927.81,881.73,927.81,868.47z M735.05,829.56L733.25,829.56 731.45,837.34 729.65,837.34C727.25,840.58 724.85,843.83 722.44,847.07 717.41,848.24 713.83,851.53 709.83,852.91 703.86,854.97 693.28,852.08 690.01,850.96 684.01,849.66 678,848.37 671.99,847.07 671.39,845.77 670.79,844.48 670.19,843.18 667.79,842.53 665.39,841.88 662.98,841.23 662.38,839.93 661.78,838.64 661.18,837.34L652.17,835.39C651.57,834.09 650.97,832.8 650.37,831.5 646.17,827.61 641.96,823.72 637.76,819.83L637.76,815.94C634.16,814.77 636.21,816.21 634.16,813.99 628.47,809.94 629.97,805.69 626.95,798.42L625.15,798.42 621.55,786.75 619.75,786.75 617.95,742 617.95,574.67 405.37,574.67 405.37,720.6C410.43,740.15 407.17,771.45 407.17,794.54 407.17,805.16 408.04,819.67 405.37,827.62L403.57,827.62 403.57,833.46 399.97,835.41 399.97,839.3 398.17,839.3C396.37,841.89 394.57,844.49 392.77,847.08 387.23,848.29 382.55,851.47 378.36,852.92 369.27,856.06 358.13,851.03 353.14,849.03L342.33,847.08 342.33,845.13 338.73,845.13C338.13,843.83,337.53,842.54,336.93,841.24L333.33,841.24 333.33,839.29 329.73,839.29 329.73,837.34 326.13,837.34 326.13,835.39 322.53,835.39C314.12,825.66 305.71,815.93 297.31,806.2 282.77,780.81 288.3,718.35 288.3,677.78L286.5,380.09 286.5,257.51C286.5,240.21 283.18,214.94 288.3,201.08 290.45,195.28 296.3,190.73 299.11,185.51 305.72,182.92 312.32,180.32 318.93,177.73 325.3,175.73 335.05,180.17 338.75,181.62L344.15,181.62 344.15,183.57 349.55,183.57 349.55,185.52 358.56,187.47 358.56,189.42 362.16,189.42C362.76,190.72,363.36,192.01,363.96,193.31L367.56,193.31C368.16,194.61,368.76,195.9,369.36,197.2L372.96,197.2 372.96,199.15C375.36,201.1,377.76,203.04,380.17,204.99L380.17,208.88C389.25,211.48,390.09,218.87,394.58,226.39L398.18,228.34 401.78,245.85C407.67,262.81,405.38,292.86,405.38,315.9L405.38,455.99 617.96,455.99 617.96,300.33C613.47,282.98,616.16,254.97,616.16,234.18L617.96,203.05C620.23,196.29 625.67,191.39 628.77,185.54 635.38,182.95 641.98,180.35 648.59,177.76 652.48,176.53 670.86,180.41 673.81,181.65L673.81,183.6C681.02,186.19 688.22,188.79 695.43,191.38 696.03,192.68 696.63,193.97 697.23,195.27L700.83,195.27C702.63,197.86 704.43,200.46 706.23,203.05 715.41,212.91 726.24,222.1 731.45,236.13 735.75,247.7 735.05,266.78 735.05,282.83L735.05,364.55 736.85,646.68 736.85,773.15C736.85,790.43,740.17,815.7,735.05,829.56z" />
+                                                        </DrawingGroup>
+                                                    </DrawingImage.Drawing>
+                                                </DrawingImage>
+                                            </Image.Source>
+                                        </Image>
+                                        <TextBlock Text="HandyControl" HorizontalAlignment="Center"/>
+                                    </StackPanel>
+                                </Button.Content>
+                            </Button>
+                        </StackPanel>
+                    </StackPanel>
+                </Grid>
+            </Border>
+        </hc:Drawer>
     </Grid>
 </Window>

@@ -16,6 +16,8 @@ namespace TexExplorer.ViewModel
     /// </summary>
     public class MainViewModel : ViewModelBase
     {
+        public bool IsShowGrid { get; set; }
+
         /// <summary>
         /// Initializes a new instance of the MainViewModel class.
         /// </summary>
@@ -29,6 +31,7 @@ namespace TexExplorer.ViewModel
             ////{
             ////    // Code runs "for real"
             ////}
+            ///
         }
     }
 }
