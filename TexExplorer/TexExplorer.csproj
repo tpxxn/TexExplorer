@@ -41,6 +41,9 @@
   <PropertyGroup>
     <ApplicationIcon>Resources\Image\Icon.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>TexExplorer.App</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="CommonServiceLocator, Version=2.0.5.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
       <HintPath>..\packages\CommonServiceLocator.2.0.5\lib\net47\CommonServiceLocator.dll</HintPath>
@@ -82,6 +85,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Model\Global.cs" />
     <Compile Include="Model\TexTool.cs" />
     <Compile Include="Model\ValueBoxes.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />

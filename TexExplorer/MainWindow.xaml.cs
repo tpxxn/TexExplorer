@@ -59,6 +59,10 @@ namespace TexExplorer
             GridSizeHeightTextBox.VerifyFunc = UnitVerifyFunc;
             ViewModel = ViewModelLocator.Current.Main;
             VersionTextBlock.Text = $"版本: {Assembly.GetExecutingAssembly().GetName().Version}";
+            if (!string.IsNullOrEmpty(Global.OpenInPath))
+            {
+                Tool.OpenFile(Global.OpenInPath, new FileStream(Global.OpenInPath, FileMode.Open, FileAccess.Read));
+            }
         }
 
         /// <summary>
