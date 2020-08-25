@@ -7,6 +7,7 @@ using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
@@ -57,6 +58,7 @@ namespace TexExplorer
             GridSizeWidthTextBox.VerifyFunc = UnitVerifyFunc;
             GridSizeHeightTextBox.VerifyFunc = UnitVerifyFunc;
             ViewModel = ViewModelLocator.Current.Main;
+            VersionTextBlock.Text = $"版本: {Assembly.GetExecutingAssembly().GetName().Version}";
         }
 
         /// <summary>
