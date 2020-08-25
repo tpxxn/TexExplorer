@@ -12,3 +12,5 @@
 ```bash
 TexExplorer "C:\1.tex" "C:\1.png"
 ```
+## 引用
+[HandyControl (modified)](https://gitee.com/tpxxn/HandyControl)
